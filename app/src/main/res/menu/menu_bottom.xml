@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/tab3"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/list_48"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/tab1"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/note_128"
+        android:title="식물 일지" />
+
+    <item
+        android:id="@+id/tab2"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/write_48"
+        android:title="작성" />
+
+    <item
+        android:id="@+id/tab4"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/diet_48"
+        android:title="생활관 식단표" />
+
+
+</menu>

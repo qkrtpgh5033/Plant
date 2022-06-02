@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="5dp"
+        android:left="-3dp"
+        android:right="-3dp"
+        android:top="-3dp">
+        <shape android:shape="rectangle" >
+
+            <!-- 테두리 두께 및 색상 설정 -->
+            <stroke
+                android:width="2dp"
+                android:color="#efefef" />
+
+            <solid android:color="#FFF" />
+        </shape>
+    </item>
+
+</layer-list>
+
