@@ -83,7 +83,7 @@ public class DiaryActivity extends AppCompatActivity implements OnTabItemSelecte
         fragment1 = new Fragment1();
         fragment2 = new Fragment2();
         plantFragment = new PlantFragment();
-        dietFragment = new DietFragment();
+//        dietFragment = new DietFragment();
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, plantFragment).commit();
@@ -109,10 +109,10 @@ public class DiaryActivity extends AppCompatActivity implements OnTabItemSelecte
                                 .replace(R.id.container, plantFragment).commit();
                         return true;
 
-                    case R.id.tab4:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.container, dietFragment).commit();
-                        return true;
+//                    case R.id.tab4:
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.container, dietFragment).commit();
+//                        return true;
 
                 }
 

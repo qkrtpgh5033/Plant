@@ -26,7 +26,8 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class DietFragment extends Fragment {
+public class
+DietFragment extends Fragment {
     private static final String TAG = "PlantFragment";
 
     RecyclerView recyclerView;

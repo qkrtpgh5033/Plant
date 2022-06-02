@@ -22,11 +22,7 @@
         android:icon="@drawable/write_48"
         android:title="작성" />
 
-    <item
-        android:id="@+id/tab4"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/diet_48"
-        android:title="생활관 식단표" />
+
 
 
 </menu>

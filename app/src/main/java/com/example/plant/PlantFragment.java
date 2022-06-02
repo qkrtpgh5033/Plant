@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -116,7 +117,10 @@ public class PlantFragment extends Fragment {
     TextView temp;
     TextView humi;
     TextView soil_humi;
-    ImageView tomato_img;
+    ImageButton waterBtn;
+    ImageButton waterSetting;
+
+    boolean setting_state = false;
 
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance(); // 파이어베이스 객체
@@ -150,6 +154,29 @@ public class PlantFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_plant, container, false);
 
         initUI(rootView);
+        waterBtn = (ImageButton) rootView.findViewById(R.id.waterBtn);
+        waterSetting = (ImageButton) rootView.findViewById(R.id.waterSetting);
+
+
+        databaseReference.child("plant").child("setting").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String state = snapshot.getValue(String.class);
+                if(state.equals("manual") ){ // 수동
+                    waterSetting.setImageResource(R.drawable.gray_water_setting);
+                }
+                else { // 활성화
+                    waterSetting.setImageResource(R.drawable.water_setting);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         databaseReference.child("plant").addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,6 +194,40 @@ public class PlantFragment extends Fragment {
             }
         });
 
+        waterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference.child("plant").child("pump").setValue("watering");
+            }
+        });
+
+        waterSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReference.child("plant").child("setting").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String state = snapshot.getValue(String.class);
+                        if(state.equals("manual") ){ // 비활성화
+                            waterSetting.setImageResource(R.drawable.water_setting);
+                            databaseReference.child("plant").child("setting").setValue("auto");
+                        }
+                        else { // 활성화
+                            waterSetting.setImageResource(R.drawable.gray_water_setting);
+                            databaseReference.child("plant").child("setting").setValue("manual");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+
+
         return rootView;
     }
 
@@ -176,9 +237,6 @@ public class PlantFragment extends Fragment {
         temp = (TextView)rootView.findViewById(R.id.temp);
         humi = (TextView)rootView.findViewById(R.id.humi);
         soil_humi = (TextView)rootView.findViewById(R.id.soil_humi);
-
-        tomato_img = (ImageView)rootView.findViewById(R.id.tomato_img);
-        Glide.with(this).load(R.drawable.tomato_move).into(tomato_img);
 
         URL = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%B2%9C%EC%95%88+%EB%82%A0%EC%94%A8";
         weather(rootView);

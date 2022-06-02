@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="10">
+
         <LinearLayout
             android:id="@+id/weather_background"
             android:layout_width="match_parent"
@@ -21,11 +18,10 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="5"
+            android:layout_weight="4"
             android:background="@drawable/border_light_blue"
             android:orientation="vertical"
             android:weightSum="5">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_marginTop="10dp"
                 android:gravity="center"
@@ -203,18 +199,15 @@
 
             </LinearLayout>
 
-
-
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginBottom="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:background="@drawable/border"
             android:orientation="vertical"
             android:weightSum="2">
@@ -230,34 +223,69 @@
 
                 <ImageView
                     android:id="@+id/tomato_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:gravity="center"
-                    app:srcCompat="@drawable/tomato"></ImageView>
+                    app:srcCompat="@drawable/plant_test">
+
+                </ImageView>
+
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="2">
+                    android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="식물명 : 챌린지 토마토"
-                        android:textSize="15sp"></TextView>
+                        android:orientation="vertical">
 
-                    <TextView
+                        <ImageButton
+                            android:id="@+id/waterBtn"
+                            android:background="@android:color/transparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/water_btn">
+                        </ImageButton>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="물주기 버튼"
+                            android:layout_gravity="center">
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="모종 날짜 : 2021년 09월 02일"
-                        android:textSize="15sp"></TextView>
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/waterSetting"
+                            android:background="@android:color/transparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/water_setting">
+                        </ImageButton>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="자동 물주기"
+                            android:layout_gravity="center">
+                        </TextView>
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -287,7 +315,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="23'c"
-                        android:textSize="15sp"></TextView>
+                        android:textSize="30sp"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -308,7 +336,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="45%"
-                        android:textSize="15sp"></TextView>
+                        android:textSize="30sp"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -329,14 +357,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="10%"
-                        android:textSize="15sp"></TextView>
+                        android:textSize="30sp"></TextView>
                 </LinearLayout>
             </LinearLayout>
 
 
         </LinearLayout>
 
-    </LinearLayout>
 
-
-</ScrollView>
+</LinearLayout>
